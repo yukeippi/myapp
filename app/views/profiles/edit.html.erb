@@ -1,0 +1,47 @@
+<%= form_with model: @user_profile_form, url: profile_path(@user), local: true, method: :patch do |form| %>
+  <% if @user_profile_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_profile_form.errors.count, "error") %> 件のエラーが発生しました:</h2>
+      <ul>
+        <% @user_profile_form.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <legend>User情報</legend>
+    <div class="field">
+      <%= form.label :user_name, "ユーザー名" %><br>
+      <%= form.text_field :user_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :email, "メールアドレス" %><br>
+      <%= form.email_field :email %>
+    </div>
+
+    <div class="field">
+      <%= form.label :password, "パスワード (変更する場合のみ入力)" %><br>
+      <%= form.password_field :password %>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Profile情報</legend>
+    <div class="field">
+      <%= form.label :bio, "自己紹介" %><br>
+      <%= form.text_area :bio %>
+    </div>
+
+    <div class="field">
+      <%= form.label :age, "年齢" %><br>
+      <%= form.number_field :age %>
+    </div>
+  </fieldset>
+
+  <div class="actions">
+    <%= form.submit "更新" %>
+  </div>
+<% end %>

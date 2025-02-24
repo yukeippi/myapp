@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   get "home/index"
 
-  resources :registrations, only: [:new, :create]
+  resources :registrations, only: [ :new, :create ]
+  resources :profiles, only: [ :edit, :update ]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
